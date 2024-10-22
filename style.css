@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap');
+
+.plus-jakarta-sans {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Minimal CSS Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+:root {
+    /* Primary Colors */
+    --lime: hsl(61, 70%, 52%);
+    --red: hsl(4, 69%, 50%);
+
+    /* Neutral Colors */
+    --white: hsl(0, 0%, 100%);
+    --slate-100: hsl(202, 86%, 94%);
+    --slate-300: hsl(203, 41%, 72%);
+    --slate-500: hsl(200, 26%, 54%);
+    --slate-700: hsl(200, 24%, 40%);
+    --slate-900: hsl(202, 55%, 16%);
+
+    /* Font */
+    --fs-100: 16px;
+    --ff-jakarta-sans: "Plus Jakarta Sans", sans-serif;
+    --fw-500: 500;
+    --fw-700: 700;
+}
+
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+main.project-container {
+    display: grid;
+}
+
+div.loan-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.25rem;
+    border: 1px solid pink;
+}
+
+.title h1 {
+    color: var(--slate-900);
+}
+
+.title button {
+    border: none;
+    border-bottom: 1px solid var(--slate-700);
+    background-color: transparent;
+    color: var(--slate-700);
+    font-weight: var(--fw-500);
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.50rem;
+    color: var(--slate-700);
+    font-weight: var(--fw-500);
+}
+
+form .input-wrapper {
+    margin-bottom: 1rem;
+}
+
+.input-wrapper div {
+    position: relative;
+    border: 1px solid var(--slate-700);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.currency,
+.loan-term,
+.percent {
+    position: absolute;
+    background-color: var(--slate-100);
+    padding: 0.875rem;
+    font-family: inherit;
+    font-weight: var(--fw-700);
+    color: var(--slate-700);
+    letter-spacing: 1px;
+}
+
+.input-wrapper:focus-within span {
+    background-color: var(--slate-900);
+    color: var(--lime);
+}
+
+.loan-term,
+.percent {
+    right: 0;
+}
+
+form input[type='number'] {
+    display: inline-block;
+    border: none;
+    padding: 0.875rem 0;
+    width: 100%;
+    border: none;
+}
+
+
+form input[type='number']#amount {
+    padding-left: 3rem;
+}
+
+form input[type='number']#term,
+form input[type='number']#rate {
+    padding-left: 1rem;
+}
+
+
+fieldset {
+    border: none;
+}
+
+fieldset label {
+    color: var(--slate-900);
+    font-weight: var(--fw-700);
+    margin-left: 0.5rem;
+    margin-bottom: 0;
+}
+
+fieldset .input-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 43px;
+    padding: 0 0.875rem;
+    border: 1px solid var(--slate-700);
+    border-radius: 5px;
+}
+
+form input[type='radio'] {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--slate-900);
+    border-radius: 50%;
+    accent-color: var(--lime);
+    /* outline: none; */
+}
+
+.input-wrapper.radio:focus-within {
+    background-color: hsla(61, 70%, 52%, 0.099);
+    border-color: var(--lime);
+}
+
+.input-wrapper:has(input[type="radio"]:checked) {
+    background-color: hsla(61, 70%, 52%, 0.099);
+    border-color: var(--lime);
+}
+
+/* For Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+
+legend {
+    color: var(--slate-700);
+    font-weight: var(--fw-500);
+    margin-bottom: 0.50rem;
+}
+
+form button[type='submit'] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem 0;
+    border-radius: 25px;
+    border: none;
+    background-color: var(--lime);
+    color: var(--slate-900);
+    font-weight: var(--fw-700);
+    font-family: inherit;
+    font-size: 1.1rem;
+}
+
+form button[type='submit'] img {
+    margin-right: 0.875rem;
+}
