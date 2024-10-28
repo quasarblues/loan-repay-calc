@@ -23,8 +23,9 @@
           <label for="amount">Loan Amount</label>
           <div>
             <span class="currency">$</span>
-            <input type="number" name="amount" id="amount">
+            <input type="text" name="amount" id="amount">
           </div>
+          <p class="error-msg">This field is required</p>
         </div>
 
         <div class="term-rate-wrapper">
@@ -35,6 +36,7 @@
               <input type="number" name="term" id="term">
               <span class="loan-term">months</span>
             </div>
+            <p class="error-msg">This field is required</p>
           </div>
 
           <div class="input-wrapper">
@@ -43,19 +45,22 @@
               <input type="number" name="rate" id="rate">
               <span class="percent">%</span>
             </div>
+            <p class="error-msg">This field is required</p>
           </div>
         </div>
         <fieldset>
           <legend>Loan Type</legend>
           <div class="input-wrapper radio">
             <input type="radio" name="loan-type" id="repayment" value="repayment">
-            <label class='radio2' for="repayment">Repayment</label>
+            <label for="repayment">Repayment</label>
           </div>
 
           <div class="input-wrapper radio">
             <input type="radio" name="loan-type" id="interest-only" value="interest-only">
-            <label class='radio2' for="interest-only">Interest Only</label>
+            <label for="interest-only">Interest Only</label>
           </div>
+          <p class="error-msg">This field is required</p>
+
         </fieldset>
         <button type="submit" class="calculate"><img src="assets/images/icon-calculator.svg" alt="">Calculate
           Repayments</button>
@@ -75,17 +80,18 @@
         <h2>Your results</h2>
         <p>Your results are shown below based on the information you provided. To adjust the results, edit the form and
           click "calculate repayments" again.</p>
-      </div>
-      <div class="repayment-container">
-        <span class="green-bar"></span>
-        <div>
-          <p>Your monthly repayments</p>
-          <p class="monthly-repayment">$1,797.74</p>
-        </div>
-        <hr>
-        <div>
-          <p>Total you'll repay over the term</p>
-          <p class="total-repayment">$539,322.94</p>
+
+        <div class="repayment-container">
+          <!-- <div class="green-bar"></div> -->
+          <div>
+            <p>Your monthly repayments</p>
+            <p class="monthly-repayment">$1,797.74</p>
+          </div>
+          <hr>
+          <div>
+            <p>Total you'll repay over the term</p>
+            <p class="total-repayment">$539,322.94</p>
+          </div>
         </div>
       </div>
     </div>
