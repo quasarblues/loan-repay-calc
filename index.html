@@ -18,14 +18,16 @@
         <button>Clear All</button>
       </div>
 
-      <form>
+      <form novalidate>
         <div class="input-wrapper currency-wrapper">
           <label for="amount">Loan Amount</label>
           <div>
             <span class="currency">$</span>
-            <input type="text" name="amount" id="amount">
+            <input type="text" name="amount" id="amount" value="5,000" required>
           </div>
-          <p class="error-msg">This field is required</p>
+          <p id="amount-error" class="error-msg" aria-live="assertive">
+            <!-- Message will be dynamically generated in app.js -->
+          </p>
         </div>
 
         <div class="term-rate-wrapper">
@@ -33,37 +35,45 @@
           <div class="input-wrapper">
             <label for="term">Loan Term</label>
             <div>
-              <input type="number" name="term" id="term">
+              <input type="number" name="term" id="term" min="1" max="1000" value="24" required>
               <span class="loan-term">months</span>
             </div>
-            <p class="error-msg">This field is required</p>
+            <p id="term-error" class="error-msg" aria-live="assertive">
+              <!-- Message will be dynamically generated in app.js -->
+            </p>
           </div>
 
           <div class="input-wrapper">
             <label for="rate">Interest Rate</label>
             <div>
-              <input type="number" name="rate" id="rate">
+              <input type="number" name="rate" id="rate" min="0" max="1000" step="0.01" value="5" required>
               <span class="percent">%</span>
             </div>
-            <p class="error-msg">This field is required</p>
+            <p id="rate-error" class="error-msg" aria-live="assertive">
+              <!-- Message will be dynamically generated in app.js -->
+            </p>
           </div>
         </div>
+
         <fieldset>
           <legend>Loan Type</legend>
           <div class="input-wrapper radio">
-            <input type="radio" name="loan-type" id="repayment" value="repayment">
-            <label for="repayment">Repayment</label>
+            <label for="repayment">
+              <input type="radio" name="loan-type" id="repayment" value="repayment" checked>
+              Repayment
+            </label>
           </div>
 
           <div class="input-wrapper radio">
-            <input type="radio" name="loan-type" id="interest-only" value="interest-only">
-            <label for="interest-only">Interest Only</label>
+            <label for="interest-only">
+              <input type="radio" name="loan-type" id="interest-only" value="interest-only">
+              Interest Only
+            </label>
+            <p id="type-error" class="error-msg">This field is required</p>
           </div>
-          <p class="error-msg">This field is required</p>
 
-        </fieldset>
-        <button type="submit" class="calculate"><img src="assets/images/icon-calculator.svg" alt="">Calculate
-          Repayments</button>
+          <button type="submit"><img src="assets/images/icon-calculator.svg" alt="">Calculate
+            Repayments</button>
       </form>
     </div>
 
@@ -85,12 +95,12 @@
           <!-- <div class="green-bar"></div> -->
           <div>
             <p>Your monthly repayments</p>
-            <p class="monthly-repayment">$1,797.74</p>
+            <p class="monthly-repayment" aria-live="polite">$219.36</p>
           </div>
           <hr>
           <div>
             <p>Total you'll repay over the term</p>
-            <p class="total-repayment">$539,322.94</p>
+            <p class="total-repayment" aria-live="polite">$5,264.57</p>
           </div>
         </div>
       </div>

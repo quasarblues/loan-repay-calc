@@ -42,12 +42,13 @@ img {
 }
 
 body {
-    font-family: "Plus Jakarta Sans", sans-serif;
-    display: flex;
     width: 100vw;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: "Plus Jakarta Sans", sans-serif;
     background-color: var(--slate-100);
 }
 
@@ -55,7 +56,7 @@ main.project-container {
     max-width: 1000px;
     display: grid;
     background-color: #fff;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 div.loan-info {
@@ -143,11 +144,6 @@ fieldset {
 fieldset label {
     color: var(--slate-900);
     font-weight: var(--fw-700);
-    margin-left: 0.5rem;
-    margin-bottom: 0;
-}
-
-fieldset .input-wrapper {
     display: flex;
     align-items: center;
     width: 100%;
@@ -155,6 +151,7 @@ fieldset .input-wrapper {
     padding: 0 0.875rem;
     border: 1px solid var(--slate-700);
     border-radius: 5px;
+
 }
 
 form input[type='radio'] {
@@ -163,7 +160,7 @@ form input[type='radio'] {
     border: 1px solid var(--slate-900);
     border-radius: 50%;
     accent-color: var(--lime);
-    /* outline: none; */
+    margin-right: 0.5rem;
 }
 
 .input-wrapper.radio:focus-within {
@@ -217,7 +214,7 @@ form button[type='submit'] img {
 
 /* Error message & state */
 
-.error {
+.input-wrapper div span.error {
     color: #fff;
     background-color: var(--red);
 }
@@ -226,18 +223,39 @@ form button[type='submit'] img {
     border-color: var(--red);
 }
 
+.input-wrapper div:has(span.error) input:focus {
+    outline: none;
+}
+
 .input-wrapper:focus-within span {
     background-color: var(--slate-900);
     color: var(--lime);
 }
 
+.input-wrapper:focus-within span.error {
+    color: #fff;
+    background-color: var(--red);
+}
+
 .error-msg {
-    display: none;
     color: var(--red);
     font-size: 0.825rem;
     margin-top: 0.5rem;
 }
 
+#amount-error,
+#term-error,
+#rate-error,
+#type-error {
+    display: none;
+}
+
+form button[type='submit'].disabled-btn {
+    background-color: hsla(61, 70%, 52%, 0.40);
+}
+
+
+/* Results  */
 div.results {
     background-color: var(--slate-900);
     color: #fff;
@@ -318,6 +336,10 @@ hr {
 /* Large Screens */
 
 @media screen and (min-width: 768px) {
+    body {
+        flex-direction: row;
+    }
+
     main.project-container {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
@@ -345,7 +367,11 @@ hr {
         margin-bottom: 1rem;
     }
 
-    fieldset .input-wrapper:hover {
+    form fieldset .input-wrapper:last-of-type {
+        margin-bottom: 2rem;
+    }
+
+    fieldset label:hover {
         cursor: pointer;
         border-color: var(--lime);
     }
@@ -353,6 +379,12 @@ hr {
     .title {
         display: flex;
         justify-content: space-between;
+    }
+
+    .title button:hover {
+        cursor: pointer;
+        color: var(--slate-900);
+        text-decoration-color: var(--slate-900);
     }
 
     .term-rate-wrapper {
@@ -366,11 +398,20 @@ hr {
 
     form button[type='submit'] {
         width: 70%;
+        transition: transform 0.2s ease;
     }
 
     form button[type='submit']:hover {
         cursor: pointer;
-        background-color: hsla(61, 70%, 52%, 0.40)
+        transform: scale(1.01);
+    }
+
+    form button[type='submit']:active {
+        transform: scale(0.99);
+    }
+
+    form button[type='submit'].disabled-btn:hover {
+        cursor: not-allowed;
     }
 
     div.results {
