@@ -9,6 +9,7 @@ const monthlyRepayEl = document.querySelector('.monthly-repayment');
 const totalRepayEl = document.querySelector('.total-repayment');
 
 const submitBtn = document.querySelector('button[type="submit"]');
+const clearBtn = document.querySelector('.title button');
 
 // Object of error messages
 const errorMessages = {
@@ -16,6 +17,18 @@ const errorMessages = {
     term: document.querySelector('#term-error'),
     rate: document.querySelector('#rate-error')
 }
+
+loanAmtInput.addEventListener('click', () => {
+    loanAmtInput.select();
+})
+
+loanTermInput.addEventListener('click', () => {
+    loanTermInput.select();
+})
+
+interestRateInput.addEventListener('click', () => {
+    interestRateInput.select();
+})
 
 loanAmtInput.addEventListener('input', (e) => {
     // Remove characters that aren't numbers or a decimal
@@ -54,7 +67,7 @@ loanTermInput.addEventListener('input', (e) => {
     } else if (value < 1 || value > 1000) {
         errorMessages.term.style.display = 'block'
         errorMessages.term.previousElementSibling.lastElementChild.classList.add('error');
-        errorMessages.term.innerText = 'Enter amount between 500 and 1,000.'
+        errorMessages.term.innerText = 'Enter amount between 1 and 1,000.'
     } else {
         errorMessages.term.style.display = 'none';
         errorMessages.term.previousElementSibling.lastElementChild.classList.remove('error');
@@ -72,12 +85,30 @@ interestRateInput.addEventListener('input', (e) => {
     } else if (value < 1 || value > 1000) {
         errorMessages.rate.style.display = 'block'
         errorMessages.rate.previousElementSibling.lastElementChild.classList.add('error');
-        errorMessages.rate.innerText = 'Enter amount between 500 and 1,000.'
+        errorMessages.rate.innerText = 'Enter amount between 1 and 1,000.'
     } else {
         errorMessages.rate.style.display = 'none';
         errorMessages.rate.previousElementSibling.lastElementChild.classList.remove('error');
     }
     toggleSubmitBtn();
+})
+
+clearBtn.addEventListener('click', () => {
+    // Clear inputs
+    loanAmtInput.value = '0';
+    loanTermInput.value = '0';
+    interestRateInput.value = '0';
+    monthlyRepayEl.innerText = '0';
+    totalRepayEl.innerText = '0';
+
+    // Reset radio default
+    document.querySelector('#repayment').checked = true;
+    document.querySelector('#interest-only').checked = false;
+
+    // Disalbe submit btn
+    submitBtn.classList.add('disabled-btn');
+    submitBtn.style.pointerEvents = 'none';
+    submitBtn.disabled = true;
 })
 
 form.addEventListener('submit', function (e) {
@@ -116,11 +147,19 @@ function toggleSubmitBtn() {
     for (errMsg of Object.values(errorMessages)) {
         if (getComputedStyle(errMsg).display === 'block') {
             submitBtn.classList.add('disabled-btn');
+            submitBtn.style.pointerEvents = 'none';
             submitBtn.disabled = true;
             return;
         }
-        submitBtn.classList.remove('disabled-btn');
-        submitBtn.disabled = false;
+        if (loanAmtInput.value === '0' || loanTermInput.value === '0' || interestRateInput.value === '0') {
+            submitBtn.classList.add('disabled-btn');
+            submitBtn.style.pointerEvents = 'none';
+            submitBtn.disabled = true;
+        } else {
+            submitBtn.classList.remove('disabled-btn');
+            submitBtn.style.pointerEvents = 'auto';
+            submitBtn.disabled = false;
+        }
     }
 }
 
