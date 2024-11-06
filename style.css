@@ -356,11 +356,6 @@ hr {
 
     .input-wrapper div:hover {
         border-color: var(--slate-900);
-        cursor: pointer;
-    }
-
-    form input:hover {
-        cursor: pointer;
     }
 
     form fieldset .input-wrapper {
@@ -410,11 +405,25 @@ hr {
         transform: scale(0.99);
     }
 
-    form button[type='submit'].disabled-btn:hover {
-        cursor: not-allowed;
-    }
-
     div.results {
         border-bottom-left-radius: 15%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .repayment-container {
+        max-width: 315px;
+    }
+
+    .repayment-container .monthly-repayment {
+        font-size: 2rem;
+    }
+
+    .repayment-container .total-repayment {
+        font-size: 1.5rem;
+    }
+
+    div.calculated-results p:first-of-type {
+        font-size: 0.875rem;
     }
 }
