@@ -163,16 +163,6 @@ form input[type='radio'] {
     margin-right: 0.5rem;
 }
 
-.input-wrapper.radio:focus-within {
-    background-color: hsla(61, 70%, 52%, 0.099);
-    border-color: var(--lime);
-}
-
-.input-wrapper:has(input[type="radio"]:checked) {
-    background-color: hsla(61, 70%, 52%, 0.099);
-    border-color: var(--lime);
-}
-
 /* For Chrome, Safari, Edge, Opera */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
@@ -213,16 +203,26 @@ form button[type='submit'] img {
 }
 
 /* Focus States */
-input:focus {
-    outline: 1px solid var(--slate-900);
+:focus {
+    outline: 1.5px solid var(--slate-900);
 }
 
-.input-wrapper:has(input[type="text"]):focus-within div {
+/* .input-wrapper input[type="text"]:focus-within {
     outline: 1px solid var(--slate-900);
+} */
+
+/* .input-wrapper:has(input[type="number"]):focus-within div {
+    outline: 1px solid var(--slate-900);
+} */
+
+.input-wrapper.radio:focus-within {
+    background-color: hsla(61, 70%, 52%, 0.099);
+    border-color: var(--lime);
 }
 
-.input-wrapper:has(input[type="number"]):focus-within div {
-    outline: 1px solid var(--slate-900);
+.input-wrapper:has(input[type="radio"]:checked) {
+    background-color: hsla(61, 70%, 52%, 0.099);
+    border-color: var(--lime);
 }
 
 /* Error messages */
@@ -236,7 +236,7 @@ input:focus {
     border-color: var(--red);
 }
 
-.input-wrapper div:has(span.error) input:focus {
+.input-wrapper div:has(p.error) input:focus {
     outline: none;
 }
 
