@@ -212,7 +212,20 @@ form button[type='submit'] img {
     margin-right: 0.875rem;
 }
 
-/* Error message & state */
+/* Focus States */
+input:focus {
+    outline: 1px solid var(--slate-900);
+}
+
+.input-wrapper:has(input[type="text"]):focus-within div {
+    outline: 1px solid var(--slate-900);
+}
+
+.input-wrapper:has(input[type="number"]):focus-within div {
+    outline: 1px solid var(--slate-900);
+}
+
+/* Error messages */
 
 .input-wrapper div span.error {
     color: #fff;
