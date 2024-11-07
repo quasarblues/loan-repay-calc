@@ -18,18 +18,6 @@ const errorMessages = {
     rate: document.querySelector('#rate-error')
 }
 
-loanAmtInput.addEventListener('click', () => {
-    loanAmtInput.select();
-})
-
-loanTermInput.addEventListener('click', () => {
-    loanTermInput.select();
-})
-
-interestRateInput.addEventListener('click', () => {
-    interestRateInput.select();
-})
-
 loanAmtInput.addEventListener('input', (e) => {
     // Remove characters that aren't numbers or a decimal
     let value = e.target.value.replace(/[^0-9.]/g, '');
